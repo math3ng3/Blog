@@ -6,13 +6,13 @@ const getBlogs = (req, res) => {
 
     connection.query(
       query,
-      (error,
-      (blog) => {
+      (
+      (error, blog) => {
         if (error) {
           res.json(error);
           return;
         }
-        res.json(blogs);
+        res.json(blog);
       })
     );
   } catch (error) {
@@ -23,16 +23,16 @@ const getBlogs = (req, res) => {
 const getBlog = (req, res) => {
   try {
     const id = req.params.id;
-    const query = "";
+    const query = `SELECT * FROM blogs WHERE id="${id}"`;
     connection.query(
       query,
-      (error,
-      (blog) => {
+      (
+      (error, blog) => {
         if (error) {
           res.json(error);
           return;
         }
-        res.json(blogs);
+        res.json(blog);
       })
     );
   } catch (error) {
@@ -41,17 +41,17 @@ const getBlog = (req, res) => {
 };
 const createBlog = (req, res) => {
   try {
-    const { title, author, content } = req.body;
-    const query = "";
+    const { id, title, content } = req.body;
+    const query = `INSERT INTO blogs VALUES("${id}","${title}","${content}" )`;
     connection.query(
       query,
-      (error,
-      (blog) => {
+      (
+      (error, blog) => {
         if (error) {
           res.json(error);
           return;
         }
-        res.json(blogs);
+        res.json(blog);
       })
     );
   } catch (error) {
@@ -60,17 +60,18 @@ const createBlog = (req, res) => {
 };
 const updateBlog = (req, res) => {
   try {
+    const {title , content} = req.body
     const id = req.params.id;
-    const query = "";
+    const query = `UPDATE blogs SET title="${title}", content="${content}" WHERE id="${id}"`;
     connection.query(
       query,
-      (error,
-      (blog) => {
+      (
+      (error,blog) => {
         if (error) {
           res.json(error);
           return;
         }
-        res.json(blogs);
+        res.json(blog);
       })
     );
   } catch (error) {
@@ -80,16 +81,16 @@ const updateBlog = (req, res) => {
 const deleteBlog = (req, res) => {
   try {
     const id = req.params.id;
-    const query = "";
+    const query = `DELETE FROM blogs WHERE id="${id}"`;
     connection.query(
       query,
-      (error,
-      (blog) => {
+      (
+      (error, blog) => {
         if (error) {
           res.json(error);
           return;
         }
-        res.json(blogs);
+        res.json(blog);
       })
     );
   } catch (error) {
