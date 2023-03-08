@@ -1,6 +1,8 @@
-const express = require('express')
-const { getBlogs, deleteBlog, updateBlog, createBlog, getBlog } = require('./controllers/controllers')
+const express = require('express') //npm install express
 const app = express()
+const { getBlogs, deleteBlog, updateBlog, createBlog, getBlog } = require('./controllers/controllers')
+
+
 app.use(express.json())
 
 app.get('/blogs', getBlogs)

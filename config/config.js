@@ -1,9 +1,11 @@
-const mysql = require("mysql2");
+const mysql = require("mysql2");//Installed with => npm i mysql2
+const dotenv = require('dotenv').config() //Installed with => npm i dotenv
+
 
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "@EWK0129#",
+  user: process.env.USER,
+  password: process.env.PASSWORD,
   database: "blogs",
 });
 
